@@ -1,0 +1,168 @@
+Use case : Upload product 
+
+Description: Admin upload new product to the system  
+
+Pre condition : Admin have to be logged in 
+
+Post Condition : The product must be uploaded to the system 
+
+-----------------------------------------------------------------------------------
+
+Use case : Delete product 
+
+Description :  Admin delete the product 
+
+Pre-condition : The Admin is loggedin and the product exist in the system for deleting 
+
+Post- condition : The prodcut is deleted from the system 
+
+
+--------------------------------------------------------------------------------------
+
+Use Case : Update Product 
+
+Description : The Admin update the existing product 
+
+Pre-condition : The product exist in the system and the admin has logged-in 
+
+Post-condition : The product is updated 
+
+----------------------------------------------------------------------------------------
+
+Use Case : View Product 
+
+Description: The customer and admin must able to view the product 
+
+Pre-condtion : Customer/admin must logged-in to view the product 
+
+Post-condition: The product is viewed 
+
+Exception : Product doesnt have the information about false upload
+ 
+------------------------------------------------------------------------------------------
+
+Use Case: send Application 
+
+Description: The user must be able to send application for job opportunity to the system 
+
+Pre-Condtion: The user must be logged-in to the system and the applictions must be open 
+
+Post-condtion : The applicant sent application successfully so 
+
+-------------------------------------------------------------------------------------------
+
+Use Case : View Applications
+
+Description: The Admin must able to view applications from the system 
+
+Pre-conditions: The admin must be logged-in and to see the applications 
+
+Post-condtions: Applications are viewed 
+
+-----------------------------------------------------------------------------------------
+
+Use case : Update Applications 
+
+Description: The Admin view applications to accept them 
+
+Pre-condition: The Admin must be logged-in and view applications 
+
+Post-condtions: The application status is changed/ not 
+
+------------------------------------------------------------------------------------------
+
+Use case : delete Applications
+
+Description : The syustem mustr delete the applications that are not accepted after the closing date
+
+Pre-condtion :The applications must be in the system and status is not changed  
+
+Post-Condition : The applicatons are deleted 
+
+
+------------------------------------------------------------------------------------------
+
+Use Case : clocka 
+
+Description : The worker must clock-in using the system and the location and the form must be cached by the system 
+
+Pre-condition: The worker must be logged in and must be in the working site 
+
+Post- condition : The form is successfully sent to the system 
+
+------------------------------------------------------------------------------------------
+
+Use Case : Upload Form 
+
+Description : The Admin must able top upload forms that are downloadable 
+
+Pre-condition : The Admin must logged-in to the system
+
+Post_Condition : The Forms are successfully uploaded to the system by the specific Admin
+
+-------------------------------------------------------------------------------------------
+
+Use Case : Delete Forms 
+
+Description : The admin must be able to delete the form from the system 
+
+Pre-condition: The admin must be logged-in and the form must exist 
+
+Post-Condtion : The Form is successfully deleted from the system 
+
+-------------------------------------------------------------------------------------------
+
+Use Case: View Forms 
+
+Description: The worker and Admin must be able to view the forms 
+
+Pre-condtion : The worker and Admin must be logged-in to view the forms 
+
+Post-contions : The form must be successfully viewed in the system 
+
+------------------------------------------------------------------------------------------
+
+Use Case : Create Communication Groups  
+
+Description : The groups are created with specific workers in it for business communication 
+
+Pre_Condition : The admin must be logged-in and the group exist in the system 
+
+Post-Condition : The Admin can succefully is the group created
+
+------------------------------------------------------------------------------------------
+
+Use-Case : View Communication Groups 
+
+Description : The groups the created must be able to be viewd in the profile 
+
+Pre-Condition : The group must exist and the admin/customer must be loggon-on 
+
+Post-condition : Group informtion is viewed successfully
+
+------------------------------------------------------------------------------------------
+
+Use-Case : Delete Communication group
+
+Description : The Admin must be able to delete  the group for his own reasons 
+
+Pre-condition : The Admin must be logged in and the group must exist for deletion  
+
+Post-condition : The communication group is successfully deleted 
+
+------------------------------------------------------------------------------------------
+
+Use-Case : User Register
+
+Description : The user register to the system and able to use the system to avoid network traffic 
+
+Pre-condition : The application must be installed to their phones and supported by the device 
+
+Post-condition : The applicant register to the system 
+
+-----------------------------------------------------------------------------------------
+
+Use-Case : Worker Login 
+
+Descriptiom : The user must able to to login to the system for work purposes 
+

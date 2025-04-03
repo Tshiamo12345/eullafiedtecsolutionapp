@@ -1,0 +1,64 @@
+			User 
+			
+As a worker I want register so I can use the app 
+
+As a worker I want to send application 
+
+As a worker I want to send submit forms 
+
+As a worker I want to update profile 
+
+As a worker I want to download files 
+
+AS a woker I want to view files 
+
+As a worker I want to communicate 
+
+As a worker I want to view admin profile 
+
+As a worker I want to recover password so I cant login again 
+
+
+	Customer 
+
+
+As a customer I want to view product so that I can see what is it exactly
+
+As a customer I want to add product to the cart so that I can purchase them 
+
+
+
+As a customer 
+		
+		Admin 
+		
+		
+As an admin I want to register user/admin to be able to use the system 
+
+As an admin I want to create a group chat so I can communicate with my employees 
+
+As an admin I want to upload files so my employees can see the and download
+
+As an admin I want to view files that I uploaded 
+
+As an admin I want to the number of employees I have to see the capacity of my company 
+
+As an admin I want to see my employees profiles so I can see their work done 
+
+As an admin I want to delete employees profiles so I can remove them from my system 
+
+As an admin I want to be able to update my employees profiles 
+
+As an admin I want to open applications so applicants can apply
+
+As an admin I want to close applications so that i dont get them
+
+As an admin I want to upload product for my customers 
+
+As an admin I want to delete product so that my user can see them 
+
+As an admin I want to update product so that I can increase the quantity and etc 
+
+As an admin I want to see the most bought product so that I can what makes more commision 
+
+As an admin I want to see all product in my system 
