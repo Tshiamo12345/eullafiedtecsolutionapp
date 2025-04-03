@@ -1,11 +1,13 @@
 package com.example.topiefor.model;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Null;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity(name = "company")
+@Getter
+@Setter
+
 public class Company {
 
     @Id
