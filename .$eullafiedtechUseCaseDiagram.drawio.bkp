@@ -1,0 +1,70 @@
+<mxfile host="Electron" modified="2025-03-20T19:02:15.818Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.4.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="Q1zdxSjNMcsUOqYzM1uB" version="24.4.0" type="device">
+  <diagram name="Page-1" id="4qPayav1lRov5bKApCnR">
+    <mxGraphModel dx="1290" dy="629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-1" value="user" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="120" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-4" value="admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="525" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-8" value="Register profile" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="150" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-9" value="view files" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="210" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-10" value="submit forms&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="80" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-14" value="update profile" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="270" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-18" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.75;exitY=0.1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="hfYB_QdDsOCAJesvP3OJ-1" target="hfYB_QdDsOCAJesvP3OJ-10">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="100" y="126" as="sourcePoint" />
+            <mxPoint x="477.5" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-19" value="upload files" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="480" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-20" value="view user files" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="540" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-21" value="register user" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="600" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-22" value="create group chat" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="427.5" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-23" value="add user" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="440" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-27" value="delete user" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="660" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-28" value="update user profile" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="720" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-31" value="" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="130" width="580" height="870" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-32" value="Eullafied Tech Solutions" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="380" y="18" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="hfYB_QdDsOCAJesvP3OJ-20" target="hfYB_QdDsOCAJesvP3OJ-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-34" value="removeUser" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="390" width="140" height="37.5" as="geometry" />
+        </mxCell>
+        <mxCell id="hfYB_QdDsOCAJesvP3OJ-37" value="View appplications" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="790" width="120" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
