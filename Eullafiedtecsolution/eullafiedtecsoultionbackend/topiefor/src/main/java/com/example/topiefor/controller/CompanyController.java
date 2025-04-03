@@ -68,4 +68,23 @@ public class CompanyController {
 
     }
 
+    @DeleteMapping
+    public ResponseEntity<Company> deleteCompany(@RequestBody Company company){
+
+        try {
+            logger.info("Preparing deletion to the database ");
+            companyService.deleteCompany(company);
+            logger.info("Successfully deteled the company details from the database: {} ",company);
+            return new ResponseEntity<>(company,HttpStatus.OK);
+        }catch(NotFoundException notFoundException){
+            logger.error("The Company that you want to delete is not in the database ");
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        }catch(Exception ex){
+            logger.error("Somethin went wrong with server ",ex);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
 }
