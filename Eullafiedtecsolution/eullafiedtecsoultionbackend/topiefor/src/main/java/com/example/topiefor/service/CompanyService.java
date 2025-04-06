@@ -1,6 +1,7 @@
 package com.example.topiefor.service;
 
 
+import com.example.topiefor.exception.AlreadyExistException;
 import com.example.topiefor.exception.NotFoundException;
 import com.example.topiefor.exception.SavingException;
 import com.example.topiefor.exception.ServerException;
@@ -34,7 +35,7 @@ public class CompanyService {
 
         try {
 
-            Optional<Company> optCompany = companyRepo.findById("1cf59833-4476-4357-8c10-3c5e190051e4");
+            Optional<Company> optCompany = companyRepo.findByIdWithAddressesAndLocation("f52a600a-874e-445e-a1c2-b1a03310f035");
             // checking if the details of the company are present
 
             if (optCompany.isPresent()) {
@@ -60,18 +61,28 @@ public class CompanyService {
     }
 
     @Transactional
-    public void addCompany(Company company) throws SavingException, ServerException {
+    public void addCompany(Company company) throws SavingException, ServerException, AlreadyExistException {
 
         try {
-            Company savedCompany = companyRepo.save(company);
 
-            // Checking if the company details are stored to the database
-            if (savedCompany == null) {
-                logger.error("Something went wrong while saving the company details{} ", savedCompany);
-                throw new SavingException("Something went wrong while adding company to the database ");
+            // getting company by name
+            logger.info("Getting company by name from database: name {}",company.getName());
+            Optional<Company> companyExistByName = companyRepo.findByName(company.getName());
 
+            // getting company by slogan
+            logger.info("getting company by slogan from database: slogan {}",company.getSlogan());
+            Optional<Company> companyExistBySlogan = companyRepo.findBySlogan(company.getSlogan());
+
+            if(companyExistByName.isPresent() ){
+                logger.error("Company already exist by name: {}",company.getName());
+                throw new AlreadyExistException("The name of the company already exist in the database");
+            }if(companyExistBySlogan.isPresent()){
+                logger.error("Company already exist by slogan: {}",company.getSlogan());
+                throw new AlreadyExistException("Company already by slogan in the database");
             }
-            // if not everything went well
+            // saving the company
+            logger.info("Saving company to the database: company {}",company);
+            Company savedCompany = companyRepo.save(company);
             logger.info("Successfully saved the company details{} ", savedCompany);
 
         } catch (Exception ex) {
@@ -105,16 +116,34 @@ public class CompanyService {
     }
 
     @Transactional
-    public Company updateCompanyDetails(Company company) throws ServerException {
+    public Company updateCompanyDetails(Company company) throws ServerException,NotFoundException {
         try {
+            Optional<Company> optionalCompany = companyRepo.findById(company.getCompanyId());
 
+            // checking the company you want to update in the database
+            if(optionalCompany.isPresent()){
 
+                logger.info("Found the company you want to update");
+                Company companyFromDatabase = optionalCompany.get();
+                companyFromDatabase.setName(company.getName());
+                companyFromDatabase.setEmail(company.getEmail());
+                companyFromDatabase.setSlogan(company.getSlogan());
+                companyFromDatabase.setDescription(company.getDescription());
+                companyFromDatabase.setCulture(company.getCulture());
+                companyFromDatabase.setTellPhone(company.getTellPhone());
+                companyRepo.save(companyFromDatabase);
+                logger.info("Company has been successfully updated");
+                return companyFromDatabase;
+            }
+            logger.error("The company you are trying to submit does not exist, Company: {}",company.getName());
+            throw new NotFoundException("Company that you are trying to update does not exist ");
         } catch (Exception ex) {
 
+            logger.error(message,ex);
+            throw new ServerException();
 
         }
 
-        return null;
     }
 
     // checking if the company already exist in the database
