@@ -56,7 +56,7 @@ public class Company {
 
 
     public Company(String companyId, String email , String description , String name , String culture
-            , String slogan, String tellPhone){
+            , String slogan, String tellPhone,List<Address> addresses){
         this.companyId = companyId;
         this.culture = culture;
         this.email = email;
@@ -64,6 +64,7 @@ public class Company {
         this.name = name;
         this.slogan = slogan;
         this.tellPhone = tellPhone;
+        this.addresses = addresses;
     }
     public String getCompanyId(){
         return companyId;
@@ -121,5 +122,26 @@ public class Company {
         this.tellPhone = tellPhone;
     }
 
+    public List<Address> getAddresses(){
+        return addresses;
+    }
+    public void setAddresses(List<Address> addresses){
+        this.addresses = addresses;
+    }
 
+
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "companyId='" + companyId + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", slogan='" + slogan + '\'' +
+                ", culture='" + culture + '\'' +
+                ", email='" + email + '\'' +
+                ", tellPhone='" + tellPhone + '\'' +
+                ", addresses=" + addresses.toString() +
+                '}';
+    }
 }
