@@ -41,7 +41,7 @@ public class CompanyService {
             if (optCompany.isPresent()) {
 
                 // company is found from the database
-                logger.info("Information of the company is foun {}", optCompany.get());
+                logger.info("Information of the company is found {}", optCompany.get());
 
                 return optCompany.get();
 
