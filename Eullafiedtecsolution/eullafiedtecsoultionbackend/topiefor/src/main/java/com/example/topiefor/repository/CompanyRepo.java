@@ -16,4 +16,6 @@ public interface CompanyRepo extends JpaRepository<Company,String> {
     Optional<Company> findBySlogan(String name);
     @Query ("SELECT c FROM company c JOIN FETCH c.addresses a JOIN FETCH a.location WHERE c.companyId = :companyId")
     Optional<Company> findByIdWithAddressesAndLocation(@Param("companyId") String companyId);
+
+
 }
