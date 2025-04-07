@@ -13,8 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/eullafied")
-@CrossOrigin("*")
+@RequestMapping("/api/eullafied/company")
+@CrossOrigin("*/api/eullafied/*")
 // this Is a controller used to create the system
 public class CompanyController {
 
