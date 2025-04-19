@@ -1,0 +1,37 @@
+.navigationComponentFix {
+    list-style: none; /* Removes default bullet points */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+    color: #007BFF;
+}
+
+.navigationComponentFix li {
+    cursor: pointer; /* Changes the cursor to a pointer */
+    padding: 0.5rem 1rem; /* Adds padding for better spacing */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.navigationComponentFix li:hover {
+    color: #007BFF; /* Changes text color on hover */
+    background-color: #f0f0f0; /* Adds a light background on hover */
+    border-radius: 0.5rem; /* Adds rounded corners on hover */
+}
+
+.btn.no-hover {
+    font-size: 0.6rem; /* Sets the font size */
+    height: 10px; /* Sets the height */
+    padding: 0.2rem 0.5rem; /* Adjusts padding for better spacing */
+    background-color: white; /* Button background color */
+    color:blue; /* Button text color */
+    border: none; /* Removes the border */
+    border-radius: 0.3rem; /* Adds rounded corners */
+    display: flex; /* Ensures the button uses flexbox */
+    align-items: center; /* Vertically centers the content */
+    gap: 0.5rem; /* Adds spacing between the icon and text */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    transition: background-color 0.3s ease; /* Adds a smooth hover effect */
+}
+
+.btn.no-hover:hover {
+    background-color: #0056b3; /* Darkens the button on hover */
+}

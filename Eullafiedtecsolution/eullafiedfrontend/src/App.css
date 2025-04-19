@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.body{
+    max-width: 600px; /* or any value like 960px */
+    margin: 0 auto;
+    padding: 0 1rem;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .body1{
+    width: 40%;
   }
-  to {
-    transform: rotate(360deg);
+
+.home {
+    background-image: url('/./src/images/global-network-connection-world-map-point-and-line-composition-concept-of-global-business-illustration-free-vector.jpg');
+    
+    background-size: cover;
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 70vh; /* or whatever height you need */
+    color: white; /* optional */
+    border-radius: 1rem;
+    
   }
+  
+  .companyHeader {
+    text-align: center;
+    padding: 2rem;
+    color: #007BFF; /* optional */
+    margin-top: -3.5rem; /* Moves the header up */
+    font-style: italic;
+  }
+
+  .companySlogan {
+    text-align: center;
+    padding: 2rem;
+    color: #007BFF; /* Keeps the green color */
+    margin-top: -3rem; /* Moves the slogan further up */
+    font-style: italic; /* Keeps the italic style */
+    font-family: 'Poppins', sans-serif; /* Keeps the modern font */
+    font-size: 1rem; /* Sets font size to default (16px) */
+    letter-spacing: 1px; /* Adds spacing between letters */
+    line-height: 1.5; /* Improves readability */
+  }
+
+.applicationButton {
+    display: block; /* Makes the button a block element */
+    margin: -1.5rem auto; /* Moves the button up by reducing the top margin */
+    padding: 0.5rem 0.5rem; /* Keeps the padding small */
+    background-color: #007BFF; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Removes the border */
+    border-radius: 0.7rem; /* Adjusts rounded corners */
+    font-size: 0.5rem; /* Keeps the font size small */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    text-align: center; /* Ensures text is centered */
+    transition: background-color 0.3s ease; /* Adds a hover effect */
 }
+
+.applicationButton:hover {
+    background-color: #0056b3; /* Darkens the button on hover */
+}
+

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/eullafied/company")
-@CrossOrigin("*/api/eullafied/*")
+@CrossOrigin()
 // this Is a controller used to create the system
 public class CompanyController {
 
@@ -49,7 +49,7 @@ public class CompanyController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Company> addCompany(@RequestBody Company company) {
         try {
 

@@ -1,2 +1,12 @@
-package com.example.topiefor.controller;public class CheckController {
+package com.example.topiefor.controller;
+
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping
+public class CheckController {
+
+  
 }

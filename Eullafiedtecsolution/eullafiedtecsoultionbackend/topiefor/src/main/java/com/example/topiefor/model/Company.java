@@ -133,7 +133,8 @@ public class Company {
 
     @Override
     public String toString() {
-        return "Company{" +
+        return
+                "Company{" +
                 "companyId='" + companyId + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
@@ -143,5 +144,7 @@ public class Company {
                 ", tellPhone='" + tellPhone + '\'' +
                 ", addresses=" + addresses.toString() +
                 '}';
+
     }
+
 }
