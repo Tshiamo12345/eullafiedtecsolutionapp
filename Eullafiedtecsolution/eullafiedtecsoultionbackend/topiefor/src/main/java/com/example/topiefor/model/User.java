@@ -26,19 +26,20 @@ public class User {
     @NotNull
     @Column(name = "email",nullable = false)
     private String email;
-    @NotNull
+
     @Column(name = "username")
     private String username;
-    @NotNull
+
     private LocalDateTime dateOfCreation;
     private LocalDateTime lastLogin;
-    @NotNull
+
     private LocalDateTime lastUpdateProfile;
-    @NotNull
+
     private byte[] profilePicture;
     @NotNull
     private String password;
-
+    @NotNull
+    private String role;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private Address address;
 
@@ -51,7 +52,7 @@ public class User {
                 String username, LocalDateTime dateOfCreation,
                 LocalDateTime lastLogin, LocalDateTime lastUpdateProfile,
                 byte[] profilePicture, String password,
-                Address address) {
+                Address address,String role) {
 
         this.user_id = user_id;
         this.name = name;
@@ -66,6 +67,14 @@ public class User {
         this.address = address;
     }
 
+    public @NotNull String getRole() {
+        return role;
+    }
+
+    public void setRole(@NotNull String role) {
+        this.role = role;
+    }
+
     public String getUser_id() {
         return user_id;
     }
@@ -74,43 +83,43 @@ public class User {
         this.user_id = user_id;
     }
 
-    public @NotNull(message = "name can`t be null") @Pattern(regexp = "^[A-Za-z ]+$", message = "name can only contain letters and spaces") String getName() {
+    public  @Pattern(regexp = "^[A-Za-z ]+$", message = "name can only contain letters and spaces") String getName() {
         return name;
     }
 
-    public void setName(@NotNull(message = "name can`t be null") @Pattern(regexp = "^[A-Za-z ]+$", message = "name can only contain letters and spaces") String name) {
+    public void setName( @Pattern(regexp = "^[A-Za-z ]+$", message = "name can only contain letters and spaces") String name) {
         this.name = name;
     }
 
-    public @NotNull @Pattern(regexp = "^[A-za-z]+$", message = "surname can only contain letters and spaces") String getSurname() {
+    public  @Pattern(regexp = "^[A-za-z]+$", message = "surname can only contain letters and spaces") String getSurname() {
         return surname;
     }
 
-    public void setSurname(@NotNull @Pattern(regexp = "^[A-za-z]+$", message = "surname can only contain letters and spaces") String surname) {
+    public void setSurname( @Pattern(regexp = "^[A-za-z]+$", message = "surname can only contain letters and spaces") String surname) {
         this.surname = surname;
     }
 
-    public @NotNull String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(@NotNull String email) {
+    public void setEmail( String email) {
         this.email = email;
     }
 
-    public @NotNull String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(@NotNull String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public @NotNull LocalDateTime getDateOfCreation() {
+    public LocalDateTime getDateOfCreation() {
         return dateOfCreation;
     }
 
-    public void setDateOfCreation(@NotNull LocalDateTime dateOfCreation) {
+    public void setDateOfCreation( LocalDateTime dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
 
@@ -122,24 +131,24 @@ public class User {
         this.lastLogin = lastLogin;
     }
 
-    public @NotNull LocalDateTime getLastUpdateProfile() {
+    public LocalDateTime getLastUpdateProfile() {
         return lastUpdateProfile;
     }
 
-    public void setLastUpdateProfile(@NotNull LocalDateTime lastUpdateProfile) {
+    public void setLastUpdateProfile( LocalDateTime lastUpdateProfile) {
         this.lastUpdateProfile = lastUpdateProfile;
     }
 
-    @NotNull
+
     public byte[] getProfilePicture() {
         return profilePicture;
     }
 
-    public void setProfilePicture(@NotNull byte[] profilePicture) {
+    public void setProfilePicture(byte[] profilePicture) {
         this.profilePicture = profilePicture;
     }
 
-    public @NotNull String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -147,11 +156,11 @@ public class User {
         this.password = password;
     }
 
-    public @NotNull Address getAddress() {
+    public  Address getAddress() {
         return address;
     }
 
-    public void setAddress(@NotNull Address address) {
+    public void setAddress( Address address) {
         this.address = address;
     }
 

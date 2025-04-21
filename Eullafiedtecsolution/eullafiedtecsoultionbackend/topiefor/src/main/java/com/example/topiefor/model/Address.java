@@ -54,6 +54,10 @@ public class Address {
     public Address(){
 
     }
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
+
     public Address(String city, String country, String postalCode, String province , String streetName,Location location){
 
         this.city = city;
