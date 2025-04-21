@@ -33,7 +33,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf(customizer->customizer.disable())
                 .authorizeHttpRequests(request->request
-                        .requestMatchers("api/eullafied/user/login")
+                        .requestMatchers("api/eullafied/user/login","/api/eullafied/company")
                         .permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())

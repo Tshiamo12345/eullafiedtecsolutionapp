@@ -4,6 +4,7 @@ package com.example.topiefor.service;
 import com.example.topiefor.exception.NotFoundException;
 import com.example.topiefor.exception.ServerException;
 import com.example.topiefor.model.DTO.UserLoginDTO;
+import com.example.topiefor.model.DTO.UserTokenDto;
 import com.example.topiefor.model.User;
 import com.example.topiefor.model.UserPrincipal;
 import com.example.topiefor.repository.UserRepo;
@@ -28,27 +29,32 @@ public class UserService implements UserDetailsService {
     private final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final UserRepo userRepo;
 
-    private final JWTService jwtService;
+    private JWTService jwtService;
 
-    public UserService(@Lazy AuthenticationManager authenticationManager, UserRepo userRepo,JWTService jwtService) {
+    public UserService(@Lazy AuthenticationManager authenticationManager, UserRepo userRepo, JWTService jwtService) {
         this.authenticationManager = authenticationManager;
         this.userRepo = userRepo;
         this.jwtService = jwtService;
     }
 
 
-
-
     @Transactional
-    public String userLogin(UserLoginDTO userLoginDTO)  {
-    User user = new User();
-    user.setUsername(userLoginDTO.getUsername());
-    user.setPassword(user.getPassword());
+    public UserTokenDto userLogin(UserLoginDTO userLoginDTO) {
+        User user = new User();
+        String token = " ";
+        UserTokenDto userTokenDto = new UserTokenDto();
         Authentication authentication = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),userLoginDTO.getPassword()));
-        if(authentication.isAuthenticated())
-            return jwtService.generateToken(user.getUsername());
-        return "false";
+                .authenticate(new UsernamePasswordAuthenticationToken(userLoginDTO.getUsername(), userLoginDTO.getPassword()));
+
+        if (authentication.isAuthenticated()){
+            token = jwtService.generateToken(userLoginDTO.getUsername());
+            user = userRepo.findByUsername(userLoginDTO.getUsername());
+            userTokenDto.setUser(user);
+            userTokenDto.setToken(token);
+            return userTokenDto;
+        }
+
+        return null;
 
     }
 

@@ -3,6 +3,7 @@ package com.example.topiefor.controller;
 import com.example.topiefor.exception.NotFoundException;
 import com.example.topiefor.exception.ServerException;
 import com.example.topiefor.model.DTO.UserLoginDTO;
+import com.example.topiefor.model.DTO.UserTokenDto;
 import com.example.topiefor.model.User;
 import com.example.topiefor.service.UserService;
 import org.slf4j.ILoggerFactory;
@@ -24,12 +25,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/login")
-    public String  LoginUser(@RequestBody UserLoginDTO userLoginDTO){
+    @PostMapping("/login")
+    public UserTokenDto LoginUser(@RequestBody UserLoginDTO userLoginDTO){
 
-
-           return userService.userLogin(userLoginDTO);
+        return userService.userLogin(userLoginDTO);
 
     }
+
+
 
 }

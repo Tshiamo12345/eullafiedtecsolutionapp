@@ -1,0 +1,12 @@
+.navbar {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-menu {
+    min-width: 50px;
+}
+
+.workSpaceComponent {
+    margin-top: 20px;
+}
