@@ -23,6 +23,7 @@ public class CompanyController {
     private final Logger logger = LoggerFactory.getLogger(CompanyController.class);
 
     public CompanyController(CompanyService companyService) {
+
         this.companyService = companyService;
     }
 
@@ -83,7 +84,7 @@ public class CompanyController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
         }catch(Exception ex){
-            logger.error("Somethin went wrong with server ",ex);
+            logger.error("Something went wrong with server ",ex);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
