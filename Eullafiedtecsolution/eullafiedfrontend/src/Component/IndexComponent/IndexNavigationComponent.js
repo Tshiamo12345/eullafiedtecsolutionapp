@@ -1,8 +1,15 @@
 import React from 'react';
 import './IndexNavigationComponent.css';
 import { FaSignInAlt } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 function IndexNavigationComponent() {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleLoginClick = () => {
+    navigate('/login'); // Navigate to the LoginInFormComponent route
+  };
+
   return (
     <div className='nav container'>
       <nav className="navigationComponent container fixed-top text-light">
@@ -22,7 +29,11 @@ function IndexNavigationComponent() {
           </ul>
 
           {/* Right - Smaller Login Button */}
-          <button className="btn d-flex align-items-center gap-1 px-2 py-1 no-hover" style={{ fontSize: '0.6rem', height: '10px' }}>
+          <button 
+            className="btn d-flex align-items-center gap-1 px-2 py-1 no-hover" 
+            style={{ fontSize: '0.6rem', height: '10px' }} 
+            onClick={handleLoginClick} // Add onClick handler
+          >
             <FaSignInAlt style={{ fontSize: '0.6rem' }} />
             Login
           </button>
