@@ -1,12 +1,37 @@
+/* Style the navigation bar */
 .navbar {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between; /* Space between left and right sections */
+    align-items: center;
+    padding: 0; /* Remove extra padding */
+    position: relative; /* Ensure positioning works for child elements */
+    height: 50%;   
 }
 
-.dropdown-menu {
-    min-width: 50px;
-}
 
-.workSpaceComponent {
-    margin-top: 20px;
+.dropdown {
+    position: absolute; /* Position relative to the navbar */
+    background-color: white; /* Background color for dropdown */
+    top: 100%; /* Position below the navbar */
+    left: 0; /* Align to the left of the navbar */
+    padding-right: 11rem;
+     /* Set height to 90% of the viewport */
+    font-size: small;
+    }
+
+.dropdown button{
+    height: 80%;
+    width: 100%;
+    text-justify: auto;
+    padding: 0.3rem;
+    background-color: #007BFF; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Removes the border */
+    border-radius: 0.3rem; /* Adds rounded corners */
+    display: flex; /* Ensures the button uses flexbox */
+    align-items: center; /* Vertically centers the content */
+    gap: 0.5rem; /* Adds spacing between the icon and text */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    transition: background-color 0.3s ease; /* Adds a smooth hover effect */
+    
 }

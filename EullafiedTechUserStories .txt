@@ -18,6 +18,15 @@ As a worker I want to view admin profile
 
 As a worker I want to recover password so I cant login again 
 
+As a worker I want to see my last five uploaded files 
+
+As a worker I want to see new files added by Admin 
+
+
+
+As a worker I want to see my last five group messages 
+
+As a worker I want to see a track of forms 
 
 	Customer 
 
