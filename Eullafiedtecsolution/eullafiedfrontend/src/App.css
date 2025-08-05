@@ -1,60 +1,95 @@
-.body{
-    max-width: 600px; /* or any value like 960px */
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  .body1{
-    width: 40%;
-  }
+.body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 6rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  background: #fff;
+  background-image: url('images/eullafiedworldnetwork.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
-.home {
-    background-image: url('/./src/images/eullafiedworldnetwork.jpeg');
-    
-    background-size: cover;
-  
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 70vh; /* or whatever height you need */
-    color: white; /* optional */
-    border-radius: 1rem;
-    
-  }
-  
-  .companyHeader {
-    text-align: center;
-    padding: 2rem;
-    color: #007BFF; /* optional */
-    margin-top: -3.5rem; /* Moves the header up */
-    font-style: italic;
-  }
+.body1 {
+  background-image: url('images/colorful.jpg');
+  border-radius: 5rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 10rem auto 0 auto; /* Add top margin to separate from navbar */
+  max-width: 600px;
+  background-color: red;
+  min-height: 70vh; /* Increased height */
+}
 
-  .companySlogan {
-    text-align: center;
-    padding: 2rem;
-    color: #007BFF; /* Keeps the green color */
-    margin-top: -3rem; /* Moves the slogan further up */
-    font-style: italic; /* Keeps the italic style */
-    font-family: 'Poppins', sans-serif; /* Keeps the modern font */
-    font-size: 1rem; /* Sets font size to default (16px) */
-    letter-spacing: 1px; /* Adds spacing between letters */
-    line-height: 1.5; /* Improves readability */
-  }
+.companyHeader {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  padding: 8rem 0 1rem 0;
+  color: white;
+  font-style: italic;
+  font-size: 5rem;
+  letter-spacing: 4px;
+}
+
+.companySlogan {
+  text-align: center;
+  padding: 0 0 1rem 0;
+  color: white;
+  font-style: italic;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.1rem;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
 
 .applicationButton {
-    display: block; /* Makes the button a block element */
-    margin: -1.5rem auto; /* Moves the button up by reducing the top margin */
-    padding: 0.5rem 0.5rem; /* Keeps the padding small */
-    background-color: #007BFF; /* Button background color */
-    color: white; /* Button text color */
-    border: none; /* Removes the border */
-    border-radius: 0.7rem; /* Adjusts rounded corners */
-    font-size: 0.5rem; /* Keeps the font size small */
-    cursor: pointer; /* Changes the cursor to a pointer on hover */
-    text-align: center; /* Ensures text is centered */
-    transition: background-color 0.3s ease; /* Adds a hover effect */
+  display: block;
+  margin: 10rem auto 0 auto;
+  padding: 0.7rem 1.5rem;
+  background-color: #003e70;
+  color: white;
+  border: none;
+  border-radius: 0.7rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .applicationButton:hover {
-    background-color: #0056b3; /* Darkens the button on hover */
+  background-color: #0056b3;
 }
 
+/* Laptops */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .body {
+    padding: 0 3rem;
+  }
+  .companyHeader,
+  .companySlogan {
+    font-size: 1.5rem;
+  }
+  .applicationButton {
+    font-size: 1.3rem;
+    padding: 1rem 2.5rem;
+  }
+}
+
+/* TVs and very large screens */
+@media (min-width: 1920px) {
+  .body {
+    padding: 0 8rem;
+  }
+  .companyHeader,
+  .companySlogan {
+    font-size: 2.2rem;
+  }
+  .applicationButton {
+    font-size: 2rem;
+    padding: 1.5rem 4rem;
+  }
+}

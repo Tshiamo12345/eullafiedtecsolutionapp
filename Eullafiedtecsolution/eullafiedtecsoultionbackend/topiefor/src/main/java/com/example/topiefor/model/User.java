@@ -25,21 +25,33 @@ public class User {
     private String surname;
     @NotNull
     @Column(name = "email",nullable = false)
+
     private String email;
+
+    private String status;
 
     @Column(name = "username")
     private String username;
 
     private LocalDateTime dateOfCreation;
+
     private LocalDateTime lastLogin;
 
     private LocalDateTime lastUpdateProfile;
 
     private byte[] profilePicture;
+
     @NotNull
     private String password;
+
+
+    private int failedAttemptCount;
+
+    private LocalDateTime lockTime;
+
     @NotNull
     private String role;
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private Address address;
 
@@ -52,8 +64,10 @@ public class User {
                 String username, LocalDateTime dateOfCreation,
                 LocalDateTime lastLogin, LocalDateTime lastUpdateProfile,
                 byte[] profilePicture, String password,
-                Address address,String role) {
+                Address address,String role,int failedAttemptCount,LocalDateTime lockTime,String status) {
 
+        this.status = status;
+        this.failedAttemptCount= failedAttemptCount;
         this.user_id = user_id;
         this.name = name;
         this.surname = surname;
@@ -65,6 +79,7 @@ public class User {
         this.profilePicture = profilePicture;
         this.password = password;
         this.address = address;
+        this.lockTime = lockTime;
     }
 
     public @NotNull String getRole() {
@@ -75,12 +90,36 @@ public class User {
         this.role = role;
     }
 
+    public int getFailedAttemptCount() {
+        return failedAttemptCount;
+    }
+
+    public void setFailedAttemptCount(int failedAttemptCount) {
+        this.failedAttemptCount = failedAttemptCount;
+    }
+
+    public LocalDateTime getLockTime() {
+        return lockTime;
+    }
+
+    public void setLockTime(LocalDateTime lockTime) {
+        this.lockTime = lockTime;
+    }
+
     public String getUser_id() {
         return user_id;
     }
 
     public void setUser_id(String user_id) {
         this.user_id = user_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public  @Pattern(regexp = "^[A-Za-z ]+$", message = "name can only contain letters and spaces") String getName() {

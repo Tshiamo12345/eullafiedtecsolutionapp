@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { FaBars, FaUserCircle } from 'react-icons/fa';
 import './workspace.css';
-import WorkSpaceNavigation from './WorkSpaceNavigation'; // Import the WorkSpaceNavigation component
+import '../loading/loading.css';
+import WorkSpaceNavigation from '../../layout/InterWorkSpaceSideBar/WorkSpaceNavigation';
+
 function WorkSpace() {
-    const [user, setUser] = useState(null); // State to store user details
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
-        // Retrieve user details from sessionStorage
-        const storedUser = sessionStorage.getItem('user');
+        const storedUser = localStorage.getItem('user');
         if (storedUser) {
-            setUser(JSON.parse(storedUser)); // Parse the JSON string back into an object
+            setUser(JSON.parse(storedUser));
         }
     }, []);
 
     return (
-        <div className="container">
-            <WorkSpaceNavigation /> {/* Include the WorkSpaceNavigation component */}
-            <div className="container ml-5 mt-5">
-                <h1>Welcome to the WorkSpace</h1>
+        <div className="workspace-layout-container">
+            <div className="workspace-layout-nav">
+                <WorkSpaceNavigation />
             </div>
-            
+            <div className="workspace-layout-content">
+                <div className="main-content">
+                    <h1 className='welcome-heading'>
+                        Welcome to the WorkSpace{user && user.user && user.user.username ? `, ${user.user.username}` : ""}
+                    </h1>
+                </div>
+            </div>
         </div>
     );
 }

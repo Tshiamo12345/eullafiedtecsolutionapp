@@ -1,37 +1,194 @@
-.navigationComponentFix {
-    list-style: none; /* Removes default bullet points */
-    padding: 0; /* Removes default padding */
-    margin: 0; /* Removes default margin */
-    color: #007BFF;
+.navigationComponent {
+
+  
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 0.5rem 0;
 }
 
-.navigationComponentFix li {
-    cursor: pointer; /* Changes the cursor to a pointer */
-    padding: 0.5rem 1rem; /* Adds padding for better spacing */
-    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth hover effect */
+.nav-responsive {
+  font-size: 2rem;
+ 
 }
 
-.navigationComponentFix li:hover {
-    color: #007BFF; /* Changes text color on hover */
-    background-color: #f0f0f0; /* Adds a light background on hover */
-    border-radius: 0.5rem; /* Adds rounded corners on hover */
+@keyframes logoPop {
+  0% { transform: scale(0.95); opacity: 0.7;}
+  60% { transform: scale(1.08); opacity: 1;}
+  100% { transform: scale(1); opacity: 1;}
 }
 
-.btn.no-hover {
-    font-size: 0.6rem; /* Sets the font size */
-    height: 10px; /* Sets the height */
-    padding: 0.2rem 0.5rem; /* Adjusts padding for better spacing */
-    background-color: white; /* Button background color */
-    color:blue; /* Button text color */
-    border: none; /* Removes the border */
-    border-radius: 0.3rem; /* Adds rounded corners */
-    display: flex; /* Ensures the button uses flexbox */
-    align-items: center; /* Vertically centers the content */
-    gap: 0.5rem; /* Adds spacing between the icon and text */
-    cursor: pointer; /* Changes the cursor to a pointer on hover */
-    transition: background-color 0.3s ease; /* Adds a smooth hover effect */
+.ourLogo {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #003e70;
+  letter-spacing: 2px;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  transition: color 0.2s;
+  animation: logoPop 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.btn.no-hover:hover {
-    background-color: #0056b3; /* Darkens the button on hover */
+.ourLogo:hover {
+  color: #007BFF;
+  cursor: pointer;
+  text-shadow: 0 2px 16px #007BFF33, 0 1px 2px #003e7044;
+  transform: scale(1.05) rotate(-2deg);
+  transition: color 0.2s, text-shadow 0.3s, transform 0.3s;
+  filter: brightness(1.2) drop-shadow(0 0 8px #007BFF55);
+  letter-spacing: 4px;
+}
+
+.navigationComponentFix .nav-link {
+  color: #003e70;;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.2s;
+  font-size: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.navigationComponentFix .nav-link::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #007BFF 0%, #003e70 100%);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+  z-index: -1;
+}
+
+.navigationComponentFix .nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.navigationComponentFix .nav-link:hover {
+  color: #007BFF;
+  cursor: pointer;
+  transform: translateY(-2px) scale(1.07);
+  text-shadow: 0 2px 8px #007BFF22;
+  filter: brightness(1.2);
+}
+
+.login-btn-responsive {
+  font-size: 3rem;
+  background: #fff;
+  color: #003e70;
+  border-radius: 0.5rem;
+  border: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+  padding: 0.4rem 1.2rem;
+}
+
+.login-btn-responsive:hover {
+  background: #007BFF;
+  color:#007BFF;
+    cursor: pointer;
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px #007BFF22;
+}
+
+.login-icon-responsive {
+  font-size: 3em;
+    color: #003e70;
+}
+.login-icon-responsive :hover{
+  font-size: 3em;
+  color: #007BFF;
+}
+
+.login-btn-nav {
+  
+  color: #003e70;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+  padding: 0.4rem 1.2rem;
+}
+
+.login-btn-nav:hover {
+  background: #007BFF;
+  color: #fff;
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px #007BFF22;
+}
+
+.login-icon-nav {
+  color: #003e70;
+  font-size: 2rem;
+  transition: color 0.2s;
+}
+
+.login-btn-nav:hover .login-icon-nav {
+  color: #fff;
+}
+
+.login-text-nav {
+  color: #003e70;
+  font-size: 2rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.login-btn-nav:hover .login-text-nav {
+  color: #fff;
+}
+
+.back-btn-nav {
+  background: none;
+  border: none;
+  color: #003e70;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.back-btn-nav:hover {
+  color: #007BFF;
+}
+
+
+/* Laptops */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .nav-responsive {
+    font-size: 1.2rem;
+  }
+  .login-btn-responsive {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+  }
+  .ourLogo {
+    font-size: 2.5rem;
+    margin-left: 2rem;
+  }
+}
+
+/* TVs and very large screens */
+@media (min-width: 1920px) {
+  .nav-responsive {
+    font-size: 1.5rem;
+  }
+  .login-btn-responsive {
+    font-size: 1.3rem;
+    padding: 0.7rem 2rem;
+  }
+  .ourLogo {
+    font-size: 3rem;
+    margin-left: 3rem;
+  }
 }

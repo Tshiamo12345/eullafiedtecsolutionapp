@@ -77,7 +77,7 @@ public class CompanyController {
         try {
             logger.info("Preparing deletion to the database ");
             companyService.deleteCompany(company);
-            logger.info("Successfully deteled the company details from the database: {} ",company);
+            logger.info("Successfully deleted the company details from the database: {} ",company);
             return new ResponseEntity<>(company,HttpStatus.OK);
         }catch(NotFoundException notFoundException){
             logger.error("The Company that you want to delete is not in the database ");

@@ -1,5 +1,6 @@
 package com.example.topiefor.controller;
 
+import com.example.topiefor.exception.NotAuthorizedException;
 import com.example.topiefor.exception.NotFoundException;
 import com.example.topiefor.exception.ServerException;
 import com.example.topiefor.model.DTO.UserLoginDTO;
@@ -26,9 +27,25 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public UserTokenDto LoginUser(@RequestBody UserLoginDTO userLoginDTO){
+    public ResponseEntity<UserTokenDto> LoginUser(@RequestBody UserLoginDTO userLoginDTO){
 
-        return userService.userLogin(userLoginDTO);
+        try {
+            UserTokenDto userTokenDto = userService.userLogin(userLoginDTO);
+            return new ResponseEntity<>(userTokenDto,HttpStatus.OK);
+
+        } catch (NotAuthorizedException e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }catch(Exception ex){
+            try {
+                userService.incrementFailedAttempt(userLoginDTO.getUsername());
+            } catch (NotAuthorizedException e) {
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            } catch (NotFoundException e) {
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
 
     }
 

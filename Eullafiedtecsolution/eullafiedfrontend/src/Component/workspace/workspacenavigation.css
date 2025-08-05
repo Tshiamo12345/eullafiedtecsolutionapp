@@ -1,65 +1,60 @@
-/* Style the workspace navigation container */
 .workspace-navigation {
-    width: 30px; /* Narrow width for the navigation */
-    height: 100vh; /* Full height of the viewport */
-    background-color: #f8f9fa; /* Light background color */
-    padding: 2px; /* Add minimal padding inside the navigation */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    box-sizing: border-box; /* Include padding in width/height calculations */
-    position: fixed; /* Fix the navigation to the left */
-    top: 0;
-    left: 0;
-    overflow-y: auto; /* Enable scrolling if content overflows */
-    display: flex;
-    flex-direction: column; /* Align items vertically */
-    align-items: center; /* Center items horizontally */
+  background: #f7fbff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,62,112,0.06);
+  padding: 0rem 0.2rem;
+  margin: 0.5rem 0;
 }
 
-/* Style the navigation list */
 .navigtion {
-    display: flex;
-    flex-direction: column; /* Make the navigation vertical */
-    list-style: none; /* Remove default list styling */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
-    width: 100%; /* Ensure the list takes full width */
-    align-items: center; /* Center list items horizontally */
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Style each navigation item */
 .nav-item {
-    height: 10px; /* Match the width of the navigation */
-    width: 10px; /* Ensure items fit within the navigation width */
-    display: flex;
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
-    color: #007bff; /* Blue text color */
-    text-decoration: none; /* Remove underline */
-    border-radius: 4px; /* Add rounded corners */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
-    margin-bottom: 5px; /* Add spacing between items */
+  display: flex;
+  align-items: center;
 }
 
-.nav-item:hover {
-    background-color: #e9ecef; /* Light gray background on hover */
-}
-
-/* Style the menu icon */
-.menu-icon {
-    font-size: 8px; /* Adjust the size of the menu icon to fit */
-    color: #007bff; /* Blue color for the icon */
-}
-
-/* Style the file icon */
+.menu-icon,
 .file-icon {
-    font-size: 8px; /* Adjust the size of the file icon to fit */
-    color: #007bff; /* Blue color for the icon */
+  font-size: 2.8rem;
+  color: #003e70;
+  transition: color 0.2s, transform 0.2s;
+  cursor: pointer;
 }
 
-/* Style the profile image */
-.profile-image {
-    width: 8px; /* Set the width of the image */
-    height: 8px; /* Set the height of the image */
-    border-radius: 50%; /* Make the image circular */
-    object-fit: cover; /* Ensure the image fits within the circle */
+.menu-icon:hover,
+.file-icon:hover {
+  color: #007BFF;
+  transform: scale(1.15);
+}
+
+.workspace-navigation-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 400px;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.profile-nav-bottom {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: -20rem;
+  left: 0;
+  right: 0;
+  gap: 2.5rem;
 }
