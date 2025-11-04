@@ -161,15 +161,19 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public List<RecentActivity> getRecentAcivities(String userId)throws Exception{
+    public List<RecentActivity> getRecentAcivities(String userId)throws Exception,NotFoundException{
 
         try{
-            List<RecentActivity> recentActivitiesTop2 = new ArrayList<>();
-            List<RecentActivity> recentActivities = recentActivityRepo.findAll();
-            recentActivitiesTop2.add(recentActivities.get(0));
-            recentActivitiesTop2.add(recentActivities.get(1));
+            Optional<User> user = userRepo.findById(userId);
+            if(user.isEmpty()){
+                throw new NotFoundException();
+            }
 
-            return recentActivitiesTop2;
+            List<RecentActivity> recentActivities = recentActivityRepo.findAllByUserIdOrderByRecentDateDesc(userId);
+
+
+            return recentActivities;
+
         }catch(Exception ex){
             throw new Exception();
         }

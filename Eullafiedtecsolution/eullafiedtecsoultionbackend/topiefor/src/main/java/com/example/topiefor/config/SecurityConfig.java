@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/eullafied/user/login",
+                        .requestMatchers("/api/eullafied/user/login","/api/eullafied/user/recentActivity",
                                 "/api/eullafied/company",
                                 "/api/eullafied/application",
                                 "/api/eullafied/jobapplication")

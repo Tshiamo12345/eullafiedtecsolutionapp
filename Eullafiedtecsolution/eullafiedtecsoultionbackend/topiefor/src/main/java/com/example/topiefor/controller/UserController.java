@@ -139,6 +139,9 @@ public class UserController {
         try{
             List<RecentActivity> recentActivities = userService.getRecentAcivities(userId);
             return new ResponseEntity<>(recentActivities,HttpStatus.OK);
+        }catch(NotFoundException ex){
+            logger.error("User not found");
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }catch(Exception ex){
             logger.error("Something went wrong with the  server ");
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
