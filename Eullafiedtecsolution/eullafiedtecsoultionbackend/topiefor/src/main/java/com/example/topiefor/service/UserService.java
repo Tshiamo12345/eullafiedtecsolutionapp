@@ -6,14 +6,19 @@ import com.example.topiefor.exception.NotFoundException;
 import com.example.topiefor.exception.ServerException;
 import com.example.topiefor.model.DTO.UserLoginDTO;
 import com.example.topiefor.model.DTO.UserTokenDto;
+import com.example.topiefor.model.Document;
+import com.example.topiefor.model.RecentActivity;
 import com.example.topiefor.model.User;
 import com.example.topiefor.model.UserPrincipal;
+import com.example.topiefor.repository.DocumentRepo;
+import com.example.topiefor.repository.RecentActivityRepo;
 import com.example.topiefor.repository.UserRepo;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,8 +26,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,13 +38,16 @@ public class UserService implements UserDetailsService {
     private AuthenticationManager authenticationManager;
     private final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final UserRepo userRepo;
-
+    private final DocumentRepo documentRepo;
+    private final RecentActivityRepo recentActivityRepo;
     private JWTService jwtService;
 
-    public UserService(@Lazy AuthenticationManager authenticationManager, UserRepo userRepo, JWTService jwtService) {
+    public UserService(@Lazy AuthenticationManager authenticationManager,RecentActivityRepo recentActivityRepo, UserRepo userRepo, JWTService jwtService,DocumentRepo documentRepo) {
         this.authenticationManager = authenticationManager;
         this.userRepo = userRepo;
         this.jwtService = jwtService;
+        this.documentRepo = documentRepo;
+        this.recentActivityRepo = recentActivityRepo;
     }
 
 
@@ -68,6 +79,7 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
+
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         User user = userRepo.findByUsername(username);
@@ -79,6 +91,8 @@ public class UserService implements UserDetailsService {
 
         return new UserPrincipal(user);
     }
+
+    @Transactional
     public void incrementFailedAttempt(String username) throws NotAuthorizedException , NotFoundException{
         User user = null;
         user = userRepo.findByUsername(username);
@@ -95,5 +109,69 @@ public class UserService implements UserDetailsService {
             }
         // Throw unauthorized if needed
         throw new NotAuthorizedException("Invalid credentials");
+    }
+
+    @Transactional
+    public void uploadProfile (MultipartFile profilePicture , String userId) throws Exception {
+
+        try{
+            Optional<User> user = userRepo.findById(userId);
+            if(user.isEmpty()){
+                logger.error("Could not find a user");
+                throw  new Exception("Could not find a user");
+            }
+                byte[] profilePicBytes = profilePicture.getBytes();
+                if(profilePicture.isEmpty()){
+                    logger.error("I could not find a picture");
+                    throw new Exception("could not find a picture");
+                }
+                logger.info("I am saving a user ");
+                user.get().setProfilePicture(profilePicBytes);
+                userRepo.save(user.get());
+                // saving the activity
+                String documentName = "ProfilePic";
+                RecentActivity recentActivity = new RecentActivity(documentName,LocalDateTime.now(),userId);
+                recentActivityRepo.save(recentActivity);
+
+
+        }catch(Exception ex ){
+            throw new Exception();
+        }
+
+    }
+
+    @Transactional
+    public byte[] loadProfilePicture(String user_id)throws NotFoundException, ServerException{
+
+        try {
+            // fetching user
+            Optional<User> optUser = userRepo.findById(user_id);
+            logger.info("Fetching a user, User{} ", optUser);
+
+            if (optUser.isPresent()) {
+
+                return optUser.get().getProfilePicture();
+            }
+            logger.error("user not found ");
+            throw new NotFoundException();
+        }catch(Exception ex){
+            logger.error("Something went wrong with the server ",ex);
+            throw new ServerException();
+        }
+    }
+
+    @Transactional
+    public List<RecentActivity> getRecentAcivities(String userId)throws Exception{
+
+        try{
+            List<RecentActivity> recentActivitiesTop2 = new ArrayList<>();
+            List<RecentActivity> recentActivities = recentActivityRepo.findAll();
+            recentActivitiesTop2.add(recentActivities.get(0));
+            recentActivitiesTop2.add(recentActivities.get(1));
+
+            return recentActivitiesTop2;
+        }catch(Exception ex){
+            throw new Exception();
+        }
     }
 }

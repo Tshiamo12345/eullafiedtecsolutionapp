@@ -1,46 +1,66 @@
 package com.example.topiefor.service;
 
-import com.example.topiefor.model.Notification;
+import com.example.topiefor.model.*;
+import com.example.topiefor.model.DTO.NotificationDTO;
 import com.example.topiefor.repository.NotificationRepo;
-import org.aspectj.weaver.ast.Not;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.topiefor.repository.UserNotificationRepo;
+import com.example.topiefor.repository.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class NotificationService {
+    @Autowired
+    private NotificationRepo notificationRepository;
+    @Autowired
+    private UserNotificationRepo userNotificationRepository;
+    @Autowired
+    private UserRepo userRepository;
 
-    private final Logger logger = LoggerFactory.getLogger(NotificationService.class);
+    // Admin sends notification to all users
+    public Notification sendNotificationToAll(String title, String message, String senderId, String type, String details) {
 
-    private final NotificationRepo notificationRepo;
+        User sender = userRepository.findById(senderId).orElseThrow();
+        Notification notification = new Notification(title, message, LocalDateTime.now(), sender, type, details);
+        notification = notificationRepository.save(notification);
 
-    public NotificationService(NotificationRepo notificationRepo){
-
-        this.notificationRepo = notificationRepo;
-
-    }
-
-    public List<Notification> getUserNotifications(String id){
-
-        try{
-            List<Notification> getAllNotifications= notificationRepo.findAll();
-            List<Notification> userNotifications = new ArrayList<>();
-            for(Notification notification : getAllNotifications){
-
-
-             }
-
-        }catch(Exception exception){
-
+        List<User> users = userRepository.findAll();
+        for (User user : users) {
+            UserNotification userNotification = new UserNotification(user, notification, false, null);
+            userNotificationRepository.save(userNotification);
         }
-    return null;
+        return notification;
     }
 
+    // Get all notifications for a user, with read status
+    public List<NotificationDTO> getNotificationsForUser(String userId) {
+        List<UserNotification> userNotifications = userNotificationRepository.findByUser_UserIdOrderByNotification_SentAtDesc(userId);
+        List<NotificationDTO> userNotificationDTOList = new ArrayList<>();
+        for (UserNotification userNotification : userNotifications) {
+            NotificationDTO notificationDTO = new NotificationDTO();
+            notificationDTO.setDetail(userNotification.getNotification().getDetails());
+            notificationDTO.setId(userNotification.getNotification().getId());
+            notificationDTO.setMessage(userNotification.getNotification().getMessage());
+            notificationDTO.setType(userNotification.getNotification().getType());
+            notificationDTO.setTitle(userNotification.getNotification().getTitle());
+            notificationDTO.setRead(userNotification.isRead());
+            notificationDTO.setSentTime(userNotification.getNotification().getSentAt());
+            userNotificationDTOList.add(notificationDTO);
+        }
+        return userNotificationDTOList;
+    }
 
-
-
-
+    // Mark a notification as read/unread for a user
+    public void setNotificationReadStatus(String userId, String notificationId, boolean read) {
+        UserNotificationId id = new UserNotificationId(userId, notificationId);
+        UserNotification userNotification = userNotificationRepository.findById(id)
+                .orElseThrow();
+        userNotification.setRead(read);
+        userNotification.setReadAt(read ? LocalDateTime.now() : null);
+        userNotificationRepository.save(userNotification);
+    }
 }

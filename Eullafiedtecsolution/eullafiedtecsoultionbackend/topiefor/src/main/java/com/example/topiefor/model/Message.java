@@ -21,7 +21,7 @@ public class Message {
     private String message;
     private LocalDateTime sendTime;
 
-    // Renamed from 'read' to 'isRead'
+
     private boolean isRead;
 
     public Message() {}

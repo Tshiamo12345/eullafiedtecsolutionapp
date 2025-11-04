@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 
 
-public class NotFoundException extends Exception{
+public class NotFoundException extends RuntimeException{
 
     private final String message;
 

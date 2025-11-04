@@ -1,0 +1,55 @@
+/* Workspace Layout */
+.workspace-layout {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Header with company name */
+.workspace-header {
+  position: fixed;
+  top: 0;
+  left: 80px; /* Account for sidebar width */
+  right: 0;
+  height: 60px;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
+  z-index: 999;
+  border-bottom: 3px solid #3498db;
+}
+
+.company-name {
+  color: #ecf0f1;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Adjust main content to account for header */
+.workspace-layout main {
+  margin-top: 60px; /* Header height */
+  margin-left: 80px; /* Sidebar width */
+  min-height: calc(100vh - 60px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .workspace-header {
+    left: 60px; /* Smaller sidebar on mobile */
+  }
+  
+  .workspace-layout main {
+    margin-left: 60px;
+  }
+  
+  .company-name {
+    font-size: 18px;
+  }
+}

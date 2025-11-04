@@ -1,0 +1,79 @@
+.login-form-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(240, 244, 255, 0.7);
+}
+
+.login-form-box {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  min-width: 320px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.login-form-box h2 {
+  text-align: center;
+  color: #003e70;
+  margin-bottom: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+ 
+}
+
+.login-form-box .form-control {
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.login-form-box .btn-primary {
+  width: 100%;
+  border-radius: 0.5rem;
+  background: #003e70;
+  border: none;
+  font-size: 2.1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+
+.login-form-box .btn-primary:hover {
+  background: #007BFF;
+}
+
+.login-form-box .form-check-label {
+  font-size: 1rem;
+}
+
+.login-form-box .d-flex {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+
+.login-form-fields-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form-fields-row > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.login-form-box form,
+.login-form-box .form-group,
+.login-form-box .mb-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}

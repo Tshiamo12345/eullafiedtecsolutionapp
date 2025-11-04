@@ -1,0 +1,121 @@
+.job-application-form-file-btn {
+  background: #003e70;
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 0;
+  border: none;
+  transition: background 0.2s;
+  display: inline-block;
+}
+.job-application-form-file-btn:hover {
+  background: #007BFF;
+}
+.job-application-form-file-label {
+  color: #003e70;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.job-application-form-file-remove {
+  cursor: pointer;
+  color: #dc3545;
+  font-size: 1.2rem;
+  margin-left: 0.2rem;
+  transition: color 0.2s, transform 0.2s;
+}
+.job-application-form-file-remove:hover {
+  color: #a71d2a;
+  transform: scale(1.2);
+}
+.job-application-form-file-loading {
+  color: #007BFF;
+  font-size: 1.2rem;
+  margin-top: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.job-application-form-nice {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 32px rgba(0,62,112,0.13);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 340px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.job-application-title {
+  color: #003e70;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.job-application-form-box {
+  width: 100%;
+}
+
+.job-application-label {
+  color: #003e70;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.job-application-input {
+  border-radius: 0.7rem;
+  font-size: 1.15rem;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #003e70;
+  background: #f0f4ff;
+  color: #003e70;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.job-application-input:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 0 2px #007BFF33;
+  background: #e6f0fa;
+  outline: none;
+}
+
+.job-application-submit-btn {
+  width: 100%;
+  border-radius: 0.7rem;
+  background: #003e70;
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 1.3rem;
+  transition: background 0.2s, box-shadow 0.2s;
+  padding: 0.9rem 0;
+  box-shadow: 0 2px 8px #003e7011;
+  color: #fff;
+}
+
+.job-application-submit-btn:hover {
+  background: #007BFF;
+  box-shadow: 0 4px 16px #007BFF22;
+  color: #fff;
+}

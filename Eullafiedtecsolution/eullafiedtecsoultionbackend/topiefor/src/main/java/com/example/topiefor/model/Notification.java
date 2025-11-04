@@ -1,12 +1,10 @@
+// Notification.java
 package com.example.topiefor.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Notification {
@@ -14,25 +12,45 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    private String title;
     private String message;
+    private LocalDateTime sentAt;
+    private String type;
+    private String details;
+    // Who sent this notification (admin)
+    @ManyToOne
+    @JoinColumn(name = "sender_id")
+    private User sender;
 
-    @ManyToMany
-    private List<User> users;
+    @OneToMany(mappedBy = "notification", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UserNotification> userNotifications = new HashSet<>();
 
-    private LocalDateTime sendTime;
+    public Notification() {}
 
-    // Renamed from 'read' to 'isRead'
-    private String isRead;
-
-    public Notification(String id, String message, List<User> users, String isRead) {
-        this.id = id;
+    public Notification(String title, String message, LocalDateTime sentAt, User sender,String type, String details) {
+        this.title = title;
         this.message = message;
-        this.users = users;
-        this.isRead = isRead;
+        this.sentAt = sentAt;
+        this.sender = sender;
+        this.type =type;
+        this.details = details;
     }
 
-    // You may also want a default constructor!
-    public Notification() {}
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
 
     public String getId() {
         return id;
@@ -40,6 +58,14 @@ public class Notification {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getMessage() {
@@ -50,37 +76,28 @@ public class Notification {
         this.message = message;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public LocalDateTime getSentAt() {
+        return sentAt;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setSentAt(LocalDateTime sentAt) {
+        this.sentAt = sentAt;
     }
 
-    public LocalDateTime getSendTime() {
-        return sendTime;
+    public User getSender() {
+        return sender;
     }
 
-    public void setSendTime(LocalDateTime sendTime) {
-        this.sendTime = sendTime;
+    public void setSender(User sender) {
+        this.sender = sender;
     }
 
-    public String getIsRead() {
-        return isRead;
+    public Set<UserNotification> getUserNotifications() {
+        return userNotifications;
     }
 
-    public void setIsRead(String isRead) {
-        this.isRead = isRead;
+    public void setUserNotifications(Set<UserNotification> userNotifications) {
+        this.userNotifications = userNotifications;
     }
-
-    @Override
-    public String toString() {
-        return "Notification{" +
-                "id='" + id + '\'' +
-                ", message='" + message + '\'' +
-                ", users=" + users +
-                ", isRead='" + isRead + '\'' +
-                '}';
-    }
+// getters and setters
 }

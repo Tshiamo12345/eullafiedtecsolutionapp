@@ -1,6 +1,6 @@
 package com.example.topiefor.exception;
 
-public class ServerException extends Exception{
+public class ServerException extends RuntimeException{
 
     private String message;
 
