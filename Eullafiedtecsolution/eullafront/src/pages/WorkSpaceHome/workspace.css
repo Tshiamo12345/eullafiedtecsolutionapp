@@ -35,12 +35,9 @@
 .welcome-title {
   font-size: 24px;
   font-weight: 700;
-  color: #1e293b;
+ color: #3b82f6;
   margin: 0;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  
 }
 
 /* Profile Section */

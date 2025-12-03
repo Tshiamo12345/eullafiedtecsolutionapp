@@ -36,7 +36,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/eullafied/user/login","/api/eullafied/user/recentActivity",
                                 "/api/eullafied/company",
                                 "/api/eullafied/application",
-                                "/api/eullafied/jobapplication")
+                                "/api/eullafied/jobapplication","/api/eullafied/notifications/send")
                         .permitAll()
                         .anyRequest().authenticated()
                 )

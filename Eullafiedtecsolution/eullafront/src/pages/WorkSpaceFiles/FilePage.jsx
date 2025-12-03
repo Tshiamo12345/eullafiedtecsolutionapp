@@ -3,8 +3,9 @@ import './FilePage.css';
 import { uploadDocument, getUserDocuments, downloadUserDocument } from '../../utils/FileApi/File';
 import { getAllAdminsDocuments } from '../../utils/FileApi/AdminFileApi';
 import SuccessPopup from '../../components/SuccessPopup/SuccessPopup';
-
+import {FiSearch} from 'react-icons/fi';
 function FilePage() {
+  
   const [activeTab, setActiveTab] = useState('myFiles');
   const [searchTerm, setSearchTerm] = useState('');
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -488,7 +489,7 @@ function FilePage() {
         {/* Search Bar */}
         <div className="search-container">
           <div className="search-box">
-            <span className="search-icon">🔍</span>
+            <FiSearch className="search-icon" />
             <input
               type="text"
               placeholder="Search files by name or type..."

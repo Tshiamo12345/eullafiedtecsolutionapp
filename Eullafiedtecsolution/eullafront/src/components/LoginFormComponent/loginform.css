@@ -5,8 +5,9 @@
   align-items: center;
   min-height: 100vh;
   min-width: 100vh;
-  background: linear-gradient(135deg, #f4f6f8 0%, #e8ecf0 100%);
-  
+  background-image: url('../../assets/geometric_abstract_background_with_connected_dots_and_lines.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .login-card {

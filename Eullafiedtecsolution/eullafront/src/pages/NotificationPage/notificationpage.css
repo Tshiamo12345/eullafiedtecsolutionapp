@@ -24,11 +24,8 @@
   margin-bottom: 24px;   
   
   /* Add the same gradient text color as File Manager */
-  color: #1e293b;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #3498db;
+
   font-size: 2rem;
   font-weight: 600;
 }

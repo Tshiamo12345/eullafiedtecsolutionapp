@@ -22,7 +22,7 @@ function MainNavigation() {
         <nav>
           <ul className="nav-links">
             <li>
-              <Link to="/" className={isActive('/')}>
+              <Link to="/" className={isActive('/home')}>
                 Home
               </Link>
             </li>
