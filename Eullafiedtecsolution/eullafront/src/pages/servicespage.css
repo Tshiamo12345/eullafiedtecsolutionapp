@@ -1,0 +1,41 @@
+
+
+.servicePage .row {
+  gap: px;           /* space between columns */
+  align-items: stretch;
+}
+
+.column1{
+    text-align: center;
+    background-color: #3498db;
+    color: white;
+    border-radius: 20px;
+
+}
+
+.column1 p{
+    padding: 0 10px 10px 10px;
+    color: white !important;
+}
+.column3{
+    text-align: center;
+    background-color: #2ecc71;
+    color: white;
+    border-radius: 20px;
+
+}
+column3 p{
+    padding: 0 10px 10px 10px;
+    color: white !important;
+}
+.column2{
+    text-align: center;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 20px;
+    margin-left: px;
+}
+.column2 p{
+    padding: 0 10px 10px 10px;
+    color: white !important;
+}

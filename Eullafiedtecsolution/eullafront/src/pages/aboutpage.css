@@ -1,0 +1,10 @@
+.myBody{
+    height: 100vh;
+    width: 100%;
+    background-image: url('../assets/7594.jpg');
+}
+
+
+.aboutHeader{
+    color: #3498db;
+}
