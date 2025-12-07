@@ -40,9 +40,10 @@ function LoginForm() {
       alert(response.user.user_id);
       localStorage.setItem('user_id', response.user.user_id); // Assuming the response contains a user ID
       localStorage.setItem('user', JSON.stringify(response.user)); // Store user info if needed
+      localStorage.setItem('role', response.user.role); // Store user role if needed
       if(response.user.role === 'ADMIN') {
         // Redirect to admin dashboard or perform admin-specific actions
-        window.location.href = '/admin';
+        window.location.href = '/workspace/home';
         
       }else if(response.user.role === 'USER') {
         // Redirect to user dashboard or perform user-specific actions    
