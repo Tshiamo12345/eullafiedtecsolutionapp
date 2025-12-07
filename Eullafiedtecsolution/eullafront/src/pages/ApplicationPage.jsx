@@ -1,132 +1,177 @@
+import './applicationpage.css';
+import { useState } from 'react';
+
 function ApplicationPage() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedJob, setSelectedJob] = useState(null);
+  const [applicantName, setApplicantName] = useState('');
+  const [applicantEmail, setApplicantEmail] = useState('');
+  const [resumeFile, setResumeFile] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const jobs = [
+    {
+      id: 1,
+      title: 'Frontend Developer',
+      location: 'Remote/Hybrid',
+      experience: '2+ years',
+      description: 'We\'re looking for a skilled Frontend Developer to join our team and help build amazing user experiences.'
+    },
+    {
+      id: 2,
+      title: 'Backend Developer',
+      location: 'Remote/Hybrid',
+      experience: '3+ years',
+      description: 'Join our backend team to build scalable and robust server-side applications.'
+    },
+    {
+      id: 3,
+      title: 'UI/UX Designer',
+      location: 'Remote/Hybrid',
+      experience: '2+ years',
+      description: 'Help us create beautiful and intuitive user interfaces and experiences.'
+    }
+  ];
+
+  const filteredJobs = jobs.filter(job => 
+    job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    job.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const openModalForJob = (job) => {
+    setSelectedJob(job);
+    setModalOpen(true);
+    setErrorMessage('');
+    setSuccessMessage('');
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedJob(null);
+    setApplicantName('');
+    setApplicantEmail('');
+    setResumeFile(null);
+    setErrorMessage('');
+  };
+
+  const handleFileChange = (e) => {
+    const f = e.target.files[0];
+    if (!f) {
+      setResumeFile(null);
+      return;
+    }
+    if (f.type !== 'application/pdf') {
+      setErrorMessage('Please upload a PDF file.');
+      e.target.value = '';
+      setResumeFile(null);
+      return;
+    }
+    setResumeFile(f);
+    setErrorMessage('');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!applicantName.trim() || !applicantEmail.trim()) {
+      setErrorMessage('Please provide your name and email.');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(applicantEmail)) {
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+    if (!resumeFile) {
+      setErrorMessage('Please upload your resume as a PDF.');
+      return;
+    }
+
+    setSuccessMessage('Application submitted successfully!');
+    setErrorMessage('');
+
+    // Here you could POST the form data to your backend.
+    setTimeout(() => {
+      closeModal();
+    }, 1400);
+  };
+
   return (
-    <div style={{ 
-      padding: '40px 20px', 
-      maxWidth: '800px', 
-      margin: '0 auto',
-      backgroundColor: '#f4f6f8',
-      minHeight: '100vh'
-    }}>
-      <h1 style={{ color: '#2c3e50', marginBottom: '20px' }}>Job Applications</h1>
-      <p style={{ color: '#555', fontSize: '18px', lineHeight: '1.6' }}>
+    <div className="application-container">
+      <h1>Job Applications</h1>
+      
+      <div className="search-section">
+        <input 
+          type="text" 
+          className="search-input" 
+          placeholder="Search by job title or description..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button className="search-button">Search</button>
+      </div>
+      
+      <p className="application-intro">
         Join our team at EullaTech Solutions! We're looking for talented individuals to help us build innovative technology solutions.
       </p>
       
-      <div style={{ marginTop: '30px' }}>
-        <h2 style={{ color: '#2c3e50', marginBottom: '25px' }}>Available Positions</h2>
-        <div style={{ marginTop: '20px' }}>
-          <div style={{ 
-            border: '1px solid #34495e', 
-            borderRadius: '8px', 
-            padding: '25px', 
-            marginBottom: '20px',
-            backgroundColor: '#ecf0f1',
-            boxShadow: '0 2px 5px rgba(44, 62, 80, 0.1)',
-            transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-          }}>
-            <h3 style={{ color: '#2c3e50', marginBottom: '15px' }}>Frontend Developer</h3>
-            <p style={{ color: '#555' }}><strong style={{ color: '#2c3e50' }}>Location:</strong> Remote/Hybrid</p>
-            <p style={{ color: '#555' }}><strong style={{ color: '#2c3e50' }}>Experience:</strong> 2+ years</p>
-            <p style={{ color: '#555', marginBottom: '20px' }}>We're looking for a skilled Frontend Developer to join our team and help build amazing user experiences.</p>
-            <button style={{
-              backgroundColor: '#3498db',
-              color: 'white',
-              border: 'none',
-              padding: '12px 24px',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              fontSize: '16px',
-              transition: 'background-color 0.3s ease, transform 0.2s ease',
-              boxShadow: '0 2px 4px rgba(52, 152, 219, 0.3)'
-            }}
-            onMouseOver={(e) => {
-              e.target.style.backgroundColor = '#2980b9';
-              e.target.style.transform = 'translateY(-2px)';
-            }}
-            onMouseOut={(e) => {
-              e.target.style.backgroundColor = '#3498db';
-              e.target.style.transform = 'translateY(0)';
-            }}>
-              Apply Now
-            </button>
-          </div>
-          
-          <div style={{ 
-            border: '1px solid #34495e', 
-            borderRadius: '8px', 
-            padding: '25px', 
-            marginBottom: '20px',
-            backgroundColor: '#ecf0f1',
-            boxShadow: '0 2px 5px rgba(44, 62, 80, 0.1)',
-            transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-          }}>
-            <h3 style={{ color: '#2c3e50', marginBottom: '15px' }}>Backend Developer</h3>
-            <p style={{ color: '#555' }}><strong style={{ color: '#2c3e50' }}>Location:</strong> Remote/Hybrid</p>
-            <p style={{ color: '#555' }}><strong style={{ color: '#2c3e50' }}>Experience:</strong> 3+ years</p>
-            <p style={{ color: '#555', marginBottom: '20px' }}>Join our backend team to build scalable and robust server-side applications.</p>
-            <button style={{
-              backgroundColor: '#3498db',
-              color: 'white',
-              border: 'none',
-              padding: '12px 24px',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              fontSize: '16px',
-              transition: 'background-color 0.3s ease, transform 0.2s ease',
-              boxShadow: '0 2px 4px rgba(52, 152, 219, 0.3)'
-            }}
-            onMouseOver={(e) => {
-              e.target.style.backgroundColor = '#2980b9';
-              e.target.style.transform = 'translateY(-2px)';
-            }}
-            onMouseOut={(e) => {
-              e.target.style.backgroundColor = '#3498db';
-              e.target.style.transform = 'translateY(0)';
-            }}>
-              Apply Now
-            </button>
-          </div>
-          
-          <div style={{ 
-            border: '1px solid #34495e', 
-            borderRadius: '8px', 
-            padding: '25px', 
-            marginBottom: '20px',
-            backgroundColor: '#ecf0f1',
-            boxShadow: '0 2px 5px rgba(44, 62, 80, 0.1)',
-            transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-          }}>
-            <h3 style={{ color: '#2c3e50', marginBottom: '15px' }}>UI/UX Designer</h3>
-            <p style={{ color: '#555' }}><strong style={{ color: '#2c3e50' }}>Location:</strong> Remote/Hybrid</p>
-            <p style={{ color: '#555' }}><strong style={{ color: '#2c3e50' }}>Experience:</strong> 2+ years</p>
-            <p style={{ color: '#555', marginBottom: '20px' }}>Help us create beautiful and intuitive user interfaces and experiences.</p>
-            <button style={{
-              backgroundColor: '#3498db',
-              color: 'white',
-              border: 'none',
-              padding: '12px 24px',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              fontSize: '16px',
-              transition: 'background-color 0.3s ease, transform 0.2s ease',
-              boxShadow: '0 2px 4px rgba(52, 152, 219, 0.3)'
-            }}
-            onMouseOver={(e) => {
-              e.target.style.backgroundColor = '#2980b9';
-              e.target.style.transform = 'translateY(-2px)';
-            }}
-            onMouseOut={(e) => {
-              e.target.style.backgroundColor = '#3498db';
-              e.target.style.transform = 'translateY(0)';
-            }}>
-              Apply Now
-            </button>
-          </div>
+      <div className="positions-section">
+        <h2>Available</h2>
+        <div className="positions-container">
+          {filteredJobs.length > 0 ? (
+            filteredJobs.map(job => (
+              <div key={job.id} className="job-card">
+                <h3>{job.title}</h3>
+                <p><strong>Location:</strong> {job.location}</p>
+                <p><strong>Experience:</strong> {job.experience}</p>
+                <p>{job.description}</p>
+                <button className="apply-button" onClick={() => openModalForJob(job)}>
+                  Apply Now
+                </button>
+              </div>
+            ))
+          ) : (
+            <p className="no-results">No jobs found matching your search.</p>
+          )}
         </div>
       </div>
+
+      {modalOpen && (
+        <div className="modal-overlay" role="dialog" aria-modal="true">
+          <div className="modal">
+            <div className="modal-header">
+              <h3>Apply to {selectedJob?.title}</h3>
+              <button className="modal-close" onClick={closeModal} aria-label="Close">×</button>
+            </div>
+
+            <form className="application-form" onSubmit={handleSubmit}>
+              {errorMessage && <div className="error-message">{errorMessage}</div>}
+              {successMessage && <div className="success-message">{successMessage}</div>}
+
+              <div className="form-group">
+                <label htmlFor="applicantName">Full name</label>
+                <input id="applicantName" type="text" value={applicantName} onChange={(e) => setApplicantName(e.target.value)} required />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="applicantEmail">Email</label>
+                <input id="applicantEmail" type="email" value={applicantEmail} onChange={(e) => setApplicantEmail(e.target.value)} required />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="resume">Resume (PDF)</label>
+                <input id="resume" type="file" accept="application/pdf" onChange={handleFileChange} className="file-input" />
+              </div>
+
+              <div className="modal-actions">
+                <button type="submit" className="submit-btn">Send Application</button>
+                <button type="button" className="cancel-btn" onClick={closeModal}>Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
