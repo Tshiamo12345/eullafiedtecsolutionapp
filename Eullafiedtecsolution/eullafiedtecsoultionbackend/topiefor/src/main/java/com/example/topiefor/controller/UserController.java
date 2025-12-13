@@ -147,5 +147,16 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @GetMapping("/allUsers")
+    public ResponseEntity<List<User>> getAllusers(){
+
+        try{
+            return new ResponseEntity<>(userService.findAllInterns(),HttpStatus.OK);
+        }catch(ServerException exception){
+            logger.error("Something went with the server ");
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     }
 

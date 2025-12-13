@@ -178,4 +178,17 @@ public class UserService implements UserDetailsService {
             throw new Exception();
         }
     }
+
+    @Transactional
+    public List<User> findAllInterns () throws ServerException{
+
+        try{
+
+            return userRepo.findAllByRole("USER");
+
+        }catch(ServerException ex){
+            logger.error("Something went wrong with the server");
+            throw new ServerException();
+        }
+    }
 }
